@@ -80,13 +80,13 @@ for (let i = 1; i < array.length; i++) { // for ciklus bevezetése
     hadero1.innerHTML = elem.hadero1 // A cella tartalmának beállítása
     tr.appendChild(hadero1) // Cella hozzáadása az első sorhoz
 
-    if (elem.harcolo2){
+    if (elem.harcolo2){ // ha van az array-ben harcolo2 akkor tortennek a dolgok:
         const harcolo2 = document.createElement("td") // Cella létrehozása a második harcoló fél számára
     harcolo2.innerHTML = elem.harcolo2 // A cella tartalmának beállítása
     tr2.appendChild(harcolo2) // Cella hozzáadása a második sorhoz
     }
 
-    if (elem.hadero2){
+    if (elem.hadero2){ // ha van az array-ben hadero2 akkor tortennek a dolgok:
         const hadero2 = document.createElement("td") // Cella létrehozása a második harcoló fél haderője számára
     hadero2.innerHTML = elem.hadero2 // A cella tartalmának beállítása
     tr2.appendChild(hadero2) // Cella hozzáadása a második sorhoz
