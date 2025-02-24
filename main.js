@@ -86,7 +86,7 @@ for (let i = 1; i < array.length; i++) { // for ciklus bevezetése
     tr2.appendChild(harcolo2) // Cella hozzáadása a második sorhoz
     }
 
-    if (elem.hadero2){ // ha van az array-ben hadero2 akkor tortennek a dolgok:
+    if (elem.hadero2){ // ha van az array-ben hadero2 akkor tortennek a dolgok: 
         const hadero2 = document.createElement("td") // Cella létrehozása a második harcoló fél haderője számára
     hadero2.innerHTML = elem.hadero2 // A cella tartalmának beállítása
     tr2.appendChild(hadero2) // Cella hozzáadása a második sorhoz
