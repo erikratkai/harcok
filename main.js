@@ -111,11 +111,11 @@ form.addEventListener("submit", function(e){
     const hadero2_value = hadero2.value // a "hadero2" értékét kiszervezem egy új "hadero2_value" változóba
 
     const obj =  { // egy új objektumba rakom a value-s dolgokat
-        td1: harc_nev_value, 
-        td2: harcolo1_value, 
-        td3: hadero1_value, 
-        td4: harcolo2_value,
-        td5: hadero2_value 
+        harc_nev: harc_nev_value, 
+        harcolo1: harcolo1_value, 
+        hadero1: hadero1_value, 
+        harcolo2: harcolo2_value,
+        hadero2: hadero2_value 
     }
 
     array.push(obj);
