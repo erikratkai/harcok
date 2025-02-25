@@ -94,31 +94,31 @@ function fuggveny(){ //fuggveny függvény/function bevezetése
 }
 fuggveny();
 
-// const form = document.getElementById("form");
+const form = document.getElementById("form");
 
-// form.addEventListener("submit", function(e){
-//     e.preventDefault();
-//     const harc_nev = document.getElementById("harc_nev"); // harc lekérése
-//     const harcolo1 = document.getElementById("harcolo1"); // harcolo1 lekérése
-//     const hadero1 = document.getElementById("hadero1");  // hadero1 lekérése
-//     const harcolo2 = document.getElementById("harcolo2"); // harcolo2 lekérése
-//     const hadero2 = document.getElementById("hadero2"); // hadero2 lekérése
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    const harc_nev = document.getElementById("harc_nev"); // harc lekérése
+    const harcolo1 = document.getElementById("harcolo1"); // harcolo1 lekérése
+    const hadero1 = document.getElementById("hadero1");  // hadero1 lekérése
+    const harcolo2 = document.getElementById("harcolo2"); // harcolo2 lekérése
+    const hadero2 = document.getElementById("hadero2"); // hadero2 lekérése
 
-//     const harc_nev_value = harc_nev.value // a "harc" értékét kiszervezem egy új "harc_value" változóba
-//     const harcolo1_value = harcolo1.value // a "harcolo1" értékét kiszervezem egy új "harcolo1_value" változóba
-//     const hadero1_value = hadero1.value // a "hadero1" értékét kiszervezem egy új "hadero1_value" változóba
-//     const harcolo2_value = harcolo2.value // a "harcolo2" értékét kiszervezem egy új "harcolo2_value" változóba
-//     const hadero2_value = hadero2.value // a "hadero2" értékét kiszervezem egy új "hadero2_value" változóba
+    const harc_nev_value = harc_nev.value // a "harc" értékét kiszervezem egy új "harc_value" változóba
+    const harcolo1_value = harcolo1.value // a "harcolo1" értékét kiszervezem egy új "harcolo1_value" változóba
+    const hadero1_value = hadero1.value // a "hadero1" értékét kiszervezem egy új "hadero1_value" változóba
+    const harcolo2_value = harcolo2.value // a "harcolo2" értékét kiszervezem egy új "harcolo2_value" változóba
+    const hadero2_value = hadero2.value // a "hadero2" értékét kiszervezem egy új "hadero2_value" változóba
 
-//     const obj =  { // egy új objektumba rakom a value-s dolgokat
-//         td1: harc_nev_value, 
-//         td2: harcolo1_value, 
-//         td3: hadero1_value, 
-//         td4: harcolo2_value,
-//         td5: hadero2_value 
-//     }
+    const obj =  { // egy új objektumba rakom a value-s dolgokat
+        td1: harc_nev_value, 
+        td2: harcolo1_value, 
+        td3: hadero1_value, 
+        td4: harcolo2_value,
+        td5: hadero2_value 
+    }
 
-//     array.push(obj);
-//     table.innerHTML = "";
-//     fuggveny();
-// })
+    array.push(obj);
+    table.innerHTML = "";
+    fuggveny();
+})
