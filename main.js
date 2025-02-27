@@ -119,14 +119,15 @@ form.addEventListener("submit", function(e){
         hadero2: hadero2_value
     }
 
-    if(harc_nev_value && harcolo1_value && hadero1_value){
-        array.push(obj);
+
+    validacio(obj);
+    
+})
+
+function validacio(o){
+    if(o.harc_nev && o.harcolo1 && o.hadero1){
+        array.push(o);
         document.getElementById("table_div").innerHTML = "";
         fuggveny();
     }
-    // else{
-        
-    // }
-
-    
-})
+}
