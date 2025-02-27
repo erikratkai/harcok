@@ -58,30 +58,22 @@
 
     <div class="form">
         <form id="form" action="#">
-            <div class="field">
-                <label for="harc_nev">Harc megnevezése:</label><br>
-                <input type="text" id="harc_nev" name="harc_nev"><br><br>
-                <div class="error"></div>
-            </div>
 
-            <div class="field">
-                <label for="harcolo1">1. Harcoló fél:</label><br>
-                <input type="text" id="harcolo1" name="harcolo1"><br><br>
-                <div class="error"></div>
-            </div>
+            <label for="harc_nev">Harc megnevezése:</label><br>
+            <input type="text" id="harc_nev" name="harc_nev"><br><br>
+            <p id="harc_nev_error"></p>
+            <label for="harcolo1">1. Harcoló fél:</label><br>
+            <input type="text" id="harcolo1" name="harcolo1"><br><br>
+            <p id="harcolo1_error"></p>
+            <label for="hadero1">1. Haderő:</label><br>
+            <input type="text" id="hadero1" name="hadero1"><br><br>
+            <p id="hadero1_error"></p>
 
-            <div class="field">
-                <label for="hadero1">1. Haderő:</label><br>
-                <input type="text" id="hadero1" name="hadero1"><br><br>
-                <div class="error"></div>
-            </div>
-    
             <label for="harcolo2">2. Harcoló fél:</label><br>
             <input type="text" id="harcolo2" name="harcolo2"><br><br>
-    
             <label for="hadero2">2. Haderő:</label><br>
             <input type="text" id="hadero2" name="hadero2"><br><br>
-    
+
             <button>Hozzáadás</button>
         </form>
         <div id="table_div"></div>

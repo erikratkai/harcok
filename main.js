@@ -119,8 +119,14 @@ form.addEventListener("submit", function(e){
         hadero2: hadero2_value
     }
 
-    array.push(obj);
-    console.log(array);
-    document.getElementById("table_div").innerHTML = "";
-    fuggveny();
+    if(harc_nev_value && harcolo1_value && hadero1_value){
+        array.push(obj);
+        document.getElementById("table_div").innerHTML = "";
+        fuggveny();
+    }
+    // else{
+        
+    // }
+
+    
 })
