@@ -34,7 +34,8 @@ const array = [
 
 function fuggveny(){ //fuggveny függvény/function bevezetése
     const table = document.createElement("table"); // Táblázat elem létrehozása
-    document.body.appendChild(table); // Táblázat hozzáadása a dokumentum törzséhez
+    table.id = "table";
+    document.getElementById("table_div").appendChild(table); // Táblázat hozzáadása a dokumentum törzséhez
 
     const thead = document.createElement("thead"); // Táblázat fejléc létrehozása
     table.appendChild(thead); // Fejléc hozzáadása a táblázathoz
@@ -60,35 +61,35 @@ function fuggveny(){ //fuggveny függvény/function bevezetése
     for (let i = 1; i < array.length; i++) { // for ciklus bevezetése
 
         const elem = array[i]; // Az aktuális elem, amivel dolgozunk a ciklusban
-        const tr = document.createElement("tr") // Első sor létrehozása
-        tbody.appendChild(tr) // Sor hozzáadása a törzshöz
+        const tr = document.createElement("tr"); // Első sor létrehozása
+        tbody.appendChild(tr); // Sor hozzáadása a törzshöz
 
-        const tr2 = document.createElement("tr") // Második sor létrehozása
-        tbody.appendChild(tr2) // Második sor hozzáadása a törzshöz
+        const tr2 = document.createElement("tr"); // Második sor létrehozása
+        tbody.appendChild(tr2); // Második sor hozzáadása a törzshöz
 
-        const harc = document.createElement("td") // Cella létrehozása a harc nevéhez
-        harc.innerHTML = elem.harc_nev // A cella tartalmának beállítása az adatból
-        harc.rowSpan = 2 // A cella két soron jelenik meg
-        tr.appendChild(harc) // Cella hozzáadása az első sorhoz
+        const harc = document.createElement("td"); // Cella létrehozása a harc nevéhez
+        harc.innerHTML = elem.harc_nev; // A cella tartalmának beállítása az adatból
+        harc.rowSpan = 2; // A cella két soron jelenik meg
+        tr.appendChild(harc); // Cella hozzáadása az első sorhoz
 
-        const harcolo1 = document.createElement("td") // Cella létrehozása az első harcoló fél számára
-        harcolo1.innerHTML = elem.harcolo1 // A cella tartalmának beállítása
-        tr.appendChild(harcolo1) // Cella hozzáadása az első sorhoz
+        const harcolo1 = document.createElement("td"); // Cella létrehozása az első harcoló fél számára
+        harcolo1.innerHTML = elem.harcolo1; // A cella tartalmának beállítása
+        tr.appendChild(harcolo1); // Cella hozzáadása az első sorhoz
 
-        const hadero1 = document.createElement("td") // Cella létrehozása az első harcoló fél haderője számára
-        hadero1.innerHTML = elem.hadero1 // A cella tartalmának beállítása
-        tr.appendChild(hadero1) // Cella hozzáadása az első sorhoz
+        const hadero1 = document.createElement("td"); // Cella létrehozása az első harcoló fél haderője számára
+        hadero1.innerHTML = elem.hadero1; // A cella tartalmának beállítása
+        tr.appendChild(hadero1); // Cella hozzáadása az első sorhoz
 
         if (elem.harcolo2){ // ha van az array-ben harcolo2 akkor tortennek a dolgok:
-            const harcolo2 = document.createElement("td") // Cella létrehozása a második harcoló fél számára
-        harcolo2.innerHTML = elem.harcolo2 // A cella tartalmának beállítása
-        tr2.appendChild(harcolo2) // Cella hozzáadása a második sorhoz
+            const harcolo2 = document.createElement("td"); // Cella létrehozása a második harcoló fél számára
+        harcolo2.innerHTML = elem.harcolo2; // A cella tartalmának beállítása
+        tr2.appendChild(harcolo2); // Cella hozzáadása a második sorhoz
         }
 
         if (elem.hadero2){ // ha van az array-ben hadero2 akkor tortennek a dolgok: 
-            const hadero2 = document.createElement("td") // Cella létrehozása a második harcoló fél haderője számára
-        hadero2.innerHTML = elem.hadero2 // A cella tartalmának beállítása
-        tr2.appendChild(hadero2) // Cella hozzáadása a második sorhoz
+            const hadero2 = document.createElement("td"); // Cella létrehozása a második harcoló fél haderője számára
+        hadero2.innerHTML = elem.hadero2; // A cella tartalmának beállítása
+        tr2.appendChild(hadero2); // Cella hozzáadása a második sorhoz
         }
     }
 }
@@ -100,7 +101,7 @@ form.addEventListener("submit", function(e){
     e.preventDefault();
     const harc_nev = document.getElementById("harc_nev"); // harc lekérése
     const harcolo1 = document.getElementById("harcolo1"); // harcolo1 lekérése
-    const hadero1 = document.getElementById("hadero1");  // hadero1 lekérése
+    const hadero1 = document.getElementById("hadero1"); // hadero1 lekérése
     const harcolo2 = document.getElementById("harcolo2"); // harcolo2 lekérése
     const hadero2 = document.getElementById("hadero2"); // hadero2 lekérése
 
@@ -115,10 +116,11 @@ form.addEventListener("submit", function(e){
         harcolo1: harcolo1_value, 
         hadero1: hadero1_value, 
         harcolo2: harcolo2_value,
-        hadero2: hadero2_value 
+        hadero2: hadero2_value
     }
 
     array.push(obj);
-    table.innerHTML = "";
+    console.log(array);
+    document.getElementById("table_div").innerHTML = "";
     fuggveny();
 })
