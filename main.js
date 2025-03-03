@@ -98,36 +98,67 @@ fuggveny();
 const form = document.getElementById("form");
 
 form.addEventListener("submit", function(e){
-    e.preventDefault();
+    e.preventDefault(); // Az alapértelmezett űrlapküldést letiltjuk
+
     const harc_nev = document.getElementById("harc_nev"); // harc lekérése
     const harcolo1 = document.getElementById("harcolo1"); // harcolo1 lekérése
     const hadero1 = document.getElementById("hadero1"); // hadero1 lekérése
     const harcolo2 = document.getElementById("harcolo2"); // harcolo2 lekérése
     const hadero2 = document.getElementById("hadero2"); // hadero2 lekérése
 
-    const harc_nev_value = harc_nev.value // a "harc" értékét kiszervezem egy új "harc_value" változóba
-    const harcolo1_value = harcolo1.value // a "harcolo1" értékét kiszervezem egy új "harcolo1_value" változóba
-    const hadero1_value = hadero1.value // a "hadero1" értékét kiszervezem egy új "hadero1_value" változóba
-    const harcolo2_value = harcolo2.value // a "harcolo2" értékét kiszervezem egy új "harcolo2_value" változóba
-    const hadero2_value = hadero2.value // a "hadero2" értékét kiszervezem egy új "hadero2_value" változóba
-
-    const obj =  { // egy új objektumba rakom a value-s dolgokat
-        harc_nev: harc_nev_value, 
-        harcolo1: harcolo1_value, 
-        hadero1: hadero1_value, 
-        harcolo2: harcolo2_value,
-        hadero2: hadero2_value
+    const obj = { // egy új objektumba rakom a harc , stb. value-ját
+        harc_nev: harc_nev.value, 
+        harcolo1: harcolo1.value, 
+        hadero1: hadero1.value
     }
 
-
-    validacio(obj);
-    
-})
-
-function validacio(o){
-    if(o.harc_nev && o.harcolo1 && o.hadero1){
-        array.push(o);
-        document.getElementById("table_div").innerHTML = "";
-        fuggveny();
+    const obj2 = { // második harcoló fél objektuma
+        harcolo2: harcolo2.value,
+        hadero2: hadero2.value
     }
-}
+
+    // Hibajelzések törlése
+    for(const i in obj){
+        document.getElementById(i + "_error").innerHTML = ""; // hibaüzenet törlése
+    }
+    for(const i in obj2){
+        document.getElementById(i + "_error").innerHTML = ""; // hibaüzenet törlése
+    }
+
+    let Joe = true; // Jó-e / Joe (Joseph) // validacios jelzo
+
+    // Elsődleges mezők validálása
+    for(const i in obj){
+        if(!obj[i]){ // Ha az egyik mező üres
+            Joe = false;
+            document.getElementById(i + "_error").innerHTML = "Ki kell tölteni, hé!"; // Hibaüzenet kiírása
+        }
+    }
+
+    // Második harcoló fél validálása
+    let counter = 2; // Megszámoljuk, hány mező van kitöltve
+    for(const i in obj2){
+        if(!obj2[i]){ // Ha üres egy mező, csökkentjük a számlálót
+            counter--;
+        }
+    }
+
+    if(counter === 1){ // Ha csak az egyik van kitöltve, hibaüzenet
+        Joe = false;
+        for(const i in obj2){
+            if (!obj2[i]) {
+                document.getElementById(i + "_error").innerHTML = "Ki kell tölteni, hé!";
+            }
+        }
+    } else if(counter === 2){ 
+        // Ha mindkettő ki van töltve, hozzáadjuk az obj-hoz
+        obj["harcolo2"] = obj2.harcolo2;
+        obj["hadero2"] = obj2.hadero2;
+    }
+
+    if(Joe){ // Ha minden adat rendben van
+        array.push(obj); // Új adat hozzáadása a tömbhöz
+        document.getElementById("table_div").innerHTML = ""; // Az előző táblázat törlése
+        fuggveny(); // Frissített táblázat megjelenítése
+    }
+});
