@@ -97,7 +97,7 @@ fuggveny();
 
 const form = document.getElementById("form");
 
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", function(e) {
     e.preventDefault(); // Az alapértelmezett űrlapküldést letiltjuk
 
     const harc_nev = document.getElementById("harc_nev"); // harc lekérése
@@ -107,8 +107,8 @@ form.addEventListener("submit", function(e){
     const hadero2 = document.getElementById("hadero2"); // hadero2 lekérése
 
     const obj = { // egy új objektumba rakom a harc , stb. value-ját
-        harc_nev: harc_nev.value, 
-        harcolo1: harcolo1.value, 
+        harc_nev: harc_nev.value,
+        harcolo1: harcolo1.value,
         hadero1: hadero1.value
     }
 
@@ -117,48 +117,51 @@ form.addEventListener("submit", function(e){
         hadero2: hadero2.value
     }
 
-    // Hibajelzések törlése
-    for(const i in obj){
-        document.getElementById(i + "_error").innerHTML = ""; // hibaüzenet törlése
-    }
-    for(const i in obj2){
-        document.getElementById(i + "_error").innerHTML = ""; // hibaüzenet törlése
-    }
-
-    let Joe = true; // Jó-e / Joe (Joseph) // validacios jelzo
-
-    // Elsődleges mezők validálása
-    for(const i in obj){
-        if(!obj[i]){ // Ha az egyik mező üres
-            Joe = false;
-            document.getElementById(i + "_error").innerHTML = "Ki kell tölteni, hé!"; // Hibaüzenet kiírása
+    if (validacio(obj, obj2)) { // Ha a validáció sikeres, hozzáadjuk az új harcot
+        if (obj2.harcolo2 && obj2.hadero2) { 
+            obj.harcolo2 = obj2.harcolo2;
+            obj.hadero2 = obj2.hadero2;
         }
-    }
-
-    // Második harcoló fél validálása
-    let counter = 2; // Megszámoljuk, hány mező van kitöltve
-    for(const i in obj2){
-        if(!obj2[i]){ // Ha üres egy mező, csökkentjük a számlálót
-            counter--;
-        }
-    }
-
-    if(counter === 1){ // Ha csak az egyik van kitöltve, hibaüzenet
-        Joe = false;
-        for(const i in obj2){
-            if (!obj2[i]) {
-                document.getElementById(i + "_error").innerHTML = "Ki kell tölteni, hé!";
-            }
-        }
-    } else if(counter === 2){ 
-        // Ha mindkettő ki van töltve, hozzáadjuk az obj-hoz
-        obj["harcolo2"] = obj2.harcolo2;
-        obj["hadero2"] = obj2.hadero2;
-    }
-
-    if(Joe){ // Ha minden adat rendben van
         array.push(obj); // Új adat hozzáadása a tömbhöz
         document.getElementById("table_div").innerHTML = ""; // Az előző táblázat törlése
         fuggveny(); // Frissített táblázat megjelenítése
     }
 });
+
+function validacio(obj, obj2) {
+    let isValid = true; // Alapból igaz, ha minden mező helyes
+
+    for (const i in obj) {
+        document.getElementById(i + "_error").innerHTML = ""; // hibaüzenet törlése
+    }
+    for (const i in obj2) {
+        document.getElementById(i + "_error").innerHTML = ""; // hibaüzenet törlése
+    }
+
+    // Elsődleges mezők validálása
+    for (const i in obj) {
+        if (!obj[i]) { // Ha az egyik mező üres
+            isValid = false;
+            document.getElementById(i + "_error").innerHTML = "Ki kell tölteni, hé!"; // Hibaüzenet kiírása
+        }
+    }
+
+    // Második harcoló fél validálása (vagy mindkettő ki van töltve, vagy egyik sem)
+    let counter = 2; // Megszámoljuk, hány mező van kitöltve
+    for (const i in obj2) {
+        if (!obj2[i]) { // Ha üres egy mező, csökkentjük a számlálót
+            counter--;
+        }
+    }
+
+    if (counter === 1) { // Ha csak az egyik van kitöltve, hibaüzenet
+        isValid = false;
+        for (const i in obj2) {
+            if (!obj2[i]) {
+                document.getElementById(i + "_error").innerHTML = "Ki kell tölteni, hé!";
+            }
+        }
+    }
+
+    return isValid; // Ha minden oké, true-val tér vissza, különben false
+}
